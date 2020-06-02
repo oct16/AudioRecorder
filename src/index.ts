@@ -1,1 +1,2 @@
-console.log(123)
+import { Recorder } from './recorder'
+export default Recorder

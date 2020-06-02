@@ -11,7 +11,7 @@ export default [
         input: 'src/index.ts',
         output: [
             {
-                name: 'timecat',
+                name: 'Recorder',
                 format: 'iife',
                 file: 'dist/recorder.min.js'
             }
