@@ -9,16 +9,23 @@
 
 <body>
 
-    <audio controls autoplay class="audio-node" src=""></audio>
+    <audio controls class="audio-node" src=""></audio>
     <br>
     <button onclick="recorder.start()">start</button>
-    <button onclick="recorder.stop()">finish</button>
+    <button onclick="recordStop()">finish</button>
     <button onclick="recorder.download()">download</button>
 
     <script src="recorder.min.js"></script>
 
     <script>
         var recorder = new Recorder()
+
+        function recordStop() {
+            const blobUrl = recorder.stop();
+            const audioElement = document.querySelector(".audio-node")
+            audioElement.src = blobUrl
+        }
+
     </script>
 </body>
 

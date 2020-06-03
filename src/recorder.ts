@@ -11,6 +11,8 @@ export class Recorder {
     mediaNode: MediaStreamAudioSourceNode
 
     channelDataArray: Float32Array[] = []
+    generatedBlobBlob: Blob
+    generatedBlobBlobUrl: string
 
     constructor(opts?: RecorderOptions) {
         this.setOptions(opts)
@@ -69,24 +71,22 @@ export class Recorder {
         this.beginRecord()
     }
 
-    public stop(): void {
+    public stop(): string {
         this.mediaStream.getAudioTracks()[0].stop()
         this.processNode.disconnect()
         this.mediaNode.disconnect()
-
-        const blob = encodeWAV(this.channelDataArray, this.opts)
-        this.play(blob)
-    }
-
-    private play(blob: Blob): void {
-        let blobUrl = URL.createObjectURL(blob) as string
-        ;(document.querySelector('.audio-node') as HTMLAudioElement).src = blobUrl
+        const generatedBlobBlob = encodeWAV(this.channelDataArray, this.opts)
+        this.generatedBlobBlobUrl = URL.createObjectURL(generatedBlobBlob)
+        return this.generatedBlobBlobUrl
     }
 
     public download(): void {
+        if (!this.generatedBlobBlobUrl) {
+            return
+        }
         const fileName = `${new Date().valueOf()}.wav`
         const link = document.createElement('a')
-        link.href = (document.querySelector('.audio-node') as HTMLAudioElement).src
+        link.href = this.generatedBlobBlobUrl
         link.download = fileName
         link.click()
         window.URL.revokeObjectURL(link.href)
