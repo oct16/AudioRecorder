@@ -1,8 +1,10 @@
 {
-    "name": "simple-audio-recorder",
+    "name": "audio-recorder",
     "version": "1.0.0",
     "description": "",
-    "main": "dist/recorder.min.js",
+    "main": "dist/recorder.cjs.js",
+    "module": "dist/recorder.esm.js",
+    "types": "dist/src/index.d.ts",
     "scripts": {
         "dev": "node scripts/dev.js",
         "build": "node scripts/build.js"

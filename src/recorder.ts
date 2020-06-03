@@ -2,16 +2,15 @@ import { RecorderOptions, RecorderStatus } from './types'
 import { encodeWAV } from './transform'
 
 export class Recorder {
-    status: RecorderStatus
-    opts: RecorderOptions
+    private status: RecorderStatus
+    private opts: RecorderOptions
 
-    audioContext: AudioContext
-    mediaStream: MediaStream
-    processNode: ScriptProcessorNode
-    mediaNode: MediaStreamAudioSourceNode
+    private audioContext: AudioContext
+    private mediaStream: MediaStream
+    private processNode: ScriptProcessorNode
+    private mediaNode: MediaStreamAudioSourceNode
 
-    channelDataArray: Float32Array[] = []
-    generatedBlobBlob: Blob
+    private channelDataArray: Float32Array[] = []
     generatedBlobBlobUrl: string
 
     constructor(opts?: RecorderOptions) {

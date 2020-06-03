@@ -9,17 +9,17 @@ export default {
     input: 'src/index.ts',
     output: [
         {
-            name: 'timecat',
+            name: 'Recorder',
             format: 'iife',
             file: 'dist/recorder.min.js'
         },
         {
-            name: 'timecat',
+            name: 'Recorder',
             format: 'cjs',
             file: 'dist/recorder.cjs.js'
         },
         {
-            name: 'timecat',
+            name: 'Recorder',
             format: 'esm',
             file: 'dist/recorder.esm.js'
         }
